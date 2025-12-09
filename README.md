@@ -1,172 +1,186 @@
 # Proyecto_10_Introduccion_Machine_Learning
 
-Clasificación de planes de tarifa Megaline  
-Megaline Tariff Plan Classification
+# Proyecto 10 – Clasificación de planes de tarifa Megaline  
+# Project 10 – Megaline Tariff Plan Classification
 
 ---
 
 ## 🧩 Descripción general / Overview
 
-**ES 🇪🇸**
+### 🇪🇸 Español
 
-La compañía de telefonía móvil **Megaline** quiere que sus clientes dejen de usar planes heredados y migren a sus nuevos planes **Smart** y **Ultra**.  
-Para apoyar esta transición, se desarrolló un **modelo de clasificación** que, a partir del comportamiento de uso mensual de cada cliente, recomiende el plan más adecuado.
+La compañía de telefonía móvil **Megaline** busca reducir el uso de planes heredados y promover sus nuevos planes **Smart** y **Ultra**.  
+Para apoyar esta estrategia, en este proyecto se desarrolló un **modelo de clasificación** capaz de recomendar el plan más adecuado para cada cliente a partir de su comportamiento mensual de uso.
 
-El objetivo del proyecto es:
+El objetivo principal del proyecto es construir un modelo predictivo con una **exactitud mínima de 0.75**, utilizando datos reales de clientes que ya migraron a los nuevos planes.
 
-- Construir un modelo que prediga si un cliente debe usar el plan **Smart (0)** o **Ultra (1)**.
-- Alcanzar una **exactitud mínima (accuracy) de 0.75** en el conjunto de prueba.
-- Comparar varios modelos y ajustar sus hiperparámetros.
-- Realizar una “prueba de cordura” (sanity check) comparando el modelo elegido contra una estrategia ingenua.
-
-Este proyecto forma parte del **Sprint 10 – Clasificación** del bootcamp de **TripleTen (Data Science)**.
+Este proyecto forma parte del **Sprint 10 – Clasificación** del programa de **Data Science de TripleTen**.
 
 ---
 
-**EN 🇬🇧**
+### 🇬🇧 English
 
-The mobile company **Megaline** wants customers to stop using legacy plans and move to the new **Smart** and **Ultra** plans.  
-To support this transition, we developed a **classification model** that recommends the most suitable plan based on each customer’s monthly usage behavior.
+The mobile company **Megaline** wants to reduce the use of legacy plans and promote its new **Smart** and **Ultra** plans.  
+To support this strategy, a **classification model** was built to recommend the most suitable plan for each customer based on their monthly usage behavior.
 
-The project goals are:
+The main goal of the project is to develop a predictive model with a **minimum accuracy of 0.75**, using real data from customers who have already switched to the new plans.
 
-- Build a model that predicts whether a customer should use the **Smart (0)** or **Ultra (1)** plan.
-- Reach a **minimum accuracy of 0.75** on the test set.
-- Compare several models and tune their hyperparameters.
-- Perform a **sanity check** by comparing the chosen model to a naive baseline.
-
-This project is part of **Sprint 10 – Classification** from the **TripleTen (Data Science)** bootcamp.
+This project is part of **Sprint 10 – Classification** in the **TripleTen Data Science program**.
 
 ---
 
 ## 📂 Datos / Data
 
-**Archivo principal / Main file**
+### Archivo principal / Main file
+- Ruta / Path: `/datasets/users_behavior.csv`
 
-Ruta: `/datasets/users_behavior.csv`
+Cada observación corresponde al comportamiento mensual de un usuario.
 
-Cada fila representa el comportamiento mensual de un usuario.
-
-**Columnas / Columns**
-
+### Variables / Features
 - `calls` — número de llamadas / number of calls  
-- `minutes` — duración total de las llamadas en minutos / total call duration in minutes  
-- `messages` — número de SMS / number of SMS messages  
-- `mb_used` — tráfico de internet usado en MB / internet traffic used in MB  
-- `is_ultra` — plan del mes actual: **1 = Ultra**, **0 = Smart**
+- `minutes` — duración total de llamadas (minutos) / total call duration (minutes)  
+- `messages` — número de mensajes SMS / number of SMS messages  
+- `mb_used` — tráfico de internet usado (MB) / internet traffic used (MB)  
+- `is_ultra` — plan actual: **Ultra = 1**, **Smart = 0**
 
 ---
 
 ## 🔍 Metodología / Methodology
 
-**ES 🇪🇸**
+### 🇪🇸 Español
 
-Los pasos principales del proyecto fueron:
-
-1. **Carga y revisión de datos**
-   - Lectura del archivo `users_behavior.csv`.
-   - Inspección de tipos de datos, valores ausentes y distribución de las características.
+1. **Carga y exploración de datos**
+   - Lectura del archivo CSV.
+   - Revisión de tipos de datos, valores ausentes y distribución de variables.
 
 2. **Preparación de los datos**
-   - Separación de las características (`calls`, `minutes`, `messages`, `mb_used`) y la variable objetivo (`is_ultra`).
-   - División en conjuntos de **entrenamiento**, **validación** y **prueba**.
+   - Separación de variables predictoras y variable objetivo (`is_ultra`).
+   - Segmentación del dataset en conjuntos de **entrenamiento**, **validación** y **prueba**.
 
 3. **Entrenamiento de modelos**
-   - Entrenamiento de varios modelos de clasificación (por ejemplo, árboles de decisión, random forest, regresión logística, etc.).
-   - Búsqueda de hiperparámetros (profundidad del árbol, número de estimadores, etc.) usando el conjunto de validación.
+   - Entrenamiento de distintos modelos de clasificación.
+   - Ajuste de hiperparámetros utilizando el conjunto de validación.
 
-4. **Evaluación**
-   - Cálculo de la **exactitud (accuracy)** en el conjunto de validación y selección del mejor modelo.
-   - Evaluación final en el conjunto de prueba para estimar la calidad real del modelo.
+4. **Evaluación del modelo**
+   - Comparación de modelos mediante la métrica de **accuracy**.
+   - Selección del mejor modelo según desempeño y robustez.
 
-5. **Prueba de cordura (sanity check)**
-   - Comparación con un modelo ingenuo (por ejemplo, un clasificador que siempre predice el plan más frecuente).
-   - Verificación de que el modelo entrenado realmente aporta valor adicional.
+5. **Prueba de cordura**
+   - Comparación del modelo final contra una estrategia ingenua (baseline) para asegurar que el modelo aprende patrones reales.
 
 ---
 
-**EN 🇬🇧**
+### 🇬🇧 English
 
-The main steps of the project were:
-
-1. **Data loading and inspection**
-   - Reading `users_behavior.csv`.
+1. **Data loading and exploration**
+   - Reading the CSV file.
    - Checking data types, missing values, and feature distributions.
 
 2. **Data preparation**
-   - Separating features (`calls`, `minutes`, `messages`, `mb_used`) and the target (`is_ultra`).
-   - Splitting data into **training**, **validation**, and **test** sets.
+   - Separating features and target variable (`is_ultra`).
+   - Splitting the data into **training**, **validation**, and **test** sets.
 
 3. **Model training**
-   - Training several classification models (e.g., decision trees, random forest, logistic regression, etc.).
-   - Hyperparameter tuning (tree depth, number of estimators, etc.) using the validation set.
+   - Training different classification models.
+   - Hyperparameter tuning using the validation set.
 
-4. **Evaluation**
-   - Computing **accuracy** on the validation set and selecting the best model.
-   - Final evaluation on the test set to estimate real-world performance.
+4. **Model evaluation**
+   - Comparing models using **accuracy** as the main metric.
+   - Selecting the best-performing and most robust model.
 
 5. **Sanity check**
-   - Comparing against a naive model (e.g., always predicting the most frequent plan).
-   - Verifying that the trained model actually adds value.
+   - Comparing the final model against a naive baseline to ensure it captures real patterns.
 
 ---
 
-## 🤖 Modelos y resultados / Models and Results
+## 🤖 Modelos y Resultados / Models and Results
 
-> ⚠️ **Nota / Note:** Sustituye los valores entre corchetes por los resultados reales de tu notebook.
+### 🇪🇸 Español
 
-**ES 🇪🇸**
+### Modelos evaluados
+- **DecisionTreeClassifier**
+- **RandomForestClassifier**
+- **LogisticRegression**
 
-Modelos evaluados (ejemplos):
+### Resultados de exactitud (accuracy)
 
-- Regresión logística  
-- Árbol de decisión  
-- Bosque aleatorio (Random Forest)  
-- (Opcional) Otros modelos de clasificación
+| Modelo                    | Accuracy |
+|---------------------------|----------|
+| DecisionTreeClassifier    | 0.795 |
+| RandomForestClassifier    | 0.815 |
+| LogisticRegression        | 0.744 |
 
-El mejor modelo fue:
+El modelo con mejor desempeño fue **RandomForestClassifier**, superando el umbral mínimo requerido de **0.75**.
 
-- **Modelo:** `[Nombre del modelo]`  
-- **Hiperparámetros principales:** `[lista de hiperparámetros relevantes]`  
-- **Accuracy en validación:** `[accuracy_validación]`  
-- **Accuracy en prueba:** `[accuracy_prueba]`  
+### Evaluación en el conjunto de prueba
+El modelo final obtuvo:
 
-La **prueba de cordura** mostró que:
+- **Accuracy en prueba:** **0.80**
 
-- El modelo entrenado supera al modelo ingenuo con una diferencia de accuracy de aproximadamente `[delta_accuracy]`,  
-  por lo que resulta útil para recomendar planes a los clientes de Megaline.
+Métricas detalladas por clase:
+
+- **Plan Smart (0):**
+  - Precision: 0.82  
+  - Recall: 0.92  
+  - F1-score: 0.87  
+
+- **Plan Ultra (1):**
+  - Precision: 0.74  
+  - Recall: 0.53  
+  - F1-score: 0.62  
+
+Estos resultados muestran que el modelo identifica correctamente la mayoría de los usuarios del plan Smart y mantiene un desempeño aceptable para los usuarios del plan Ultra.
+
+### Prueba de cordura
+El modelo entrenado supera claramente estrategias de clasificación ingenuas, demostrando que aprende patrones relevantes del comportamiento de los clientes.
 
 ---
 
-**EN 🇬🇧**
+### 🇬🇧 English
 
-Models evaluated (examples):
+### Evaluated models
+- **DecisionTreeClassifier**
+- **RandomForestClassifier**
+- **LogisticRegression**
 
-- Logistic Regression  
-- Decision Tree  
-- Random Forest  
-- (Optional) Other classifiers
+### Accuracy results
 
-The best model was:
+| Model                     | Accuracy |
+|---------------------------|----------|
+| DecisionTreeClassifier    | 0.795 |
+| RandomForestClassifier    | 0.815 |
+| LogisticRegression        | 0.744 |
 
-- **Model:** `[Model name]`  
-- **Main hyperparameters:** `[list of relevant hyperparameters]`  
-- **Validation accuracy:** `[validation_accuracy]`  
-- **Test accuracy:** `[test_accuracy]`  
+The best-performing model was **RandomForestClassifier**, exceeding the required accuracy threshold of **0.75**.
 
-The **sanity check** showed that:
+### Test set evaluation
+The final model achieved:
 
-- The trained model outperforms the naive baseline by about `[delta_accuracy]` in accuracy,  
-  so it is useful for recommending the correct plan to Megaline customers.
+- **Test accuracy:** **0.80**
+
+Detailed metrics by class:
+
+- **Smart plan (class 0):**
+  - Precision: 0.82  
+  - Recall: 0.92  
+  - F1-score: 0.87  
+
+- **Ultra plan (class 1):**
+  - Precision: 0.74  
+  - Recall: 0.53  
+  - F1-score: 0.62  
+
+These results indicate strong performance for identifying Smart plan users and reasonable performance for Ultra plan users.
+
+### Sanity check
+The trained model clearly outperforms naive baseline strategies, confirming that it captures meaningful patterns from customer usage data.
 
 ---
 
 ## 📁 Estructura del repositorio / Repository Structure
 
-**ES 🇪🇸**
-
 ```text
 .
-├── Proyecto_10.ipynb      # Notebook principal con todo el análisis y el modelado
-├── requirements.txt       # Dependencias del proyecto
-└── README.md              # Descripción del proyecto (este archivo)
+├── Proyecto_10.ipynb
+├── requirements.txt
+└── README.md
