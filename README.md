@@ -1,7 +1,7 @@
 # Proyecto_10_Introduccion_Machine_Learning
 
-# Proyecto 10 – Clasificación de planes de tarifa Megaline  
-# Project 10 – Megaline Tariff Plan Classification
+Clasificación de planes de tarifa Megaline  
+Megaline Tariff Plan Classification
 
 ---
 
